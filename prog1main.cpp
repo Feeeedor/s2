@@ -1,7 +1,8 @@
 #include <iostream>
+#include "prog1.h"
 
 int main(){
-std::cout<<"It's work:\n";
+matrix M;
 
     return 0;
 }
