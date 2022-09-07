@@ -1,3 +1,4 @@
+#include <iostream>
 namespace prog1{
     struct stolbi{
         int stolbnum;//номер столбца
