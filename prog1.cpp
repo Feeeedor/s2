@@ -16,15 +16,15 @@ int getNum(T &a){
     const char* pr="";
     int m;
     do{
-        std::cout<<pr<<"\n";
-        std::cout<<"Enter number of lines: -->";
-        pr="You are wrong; repeat please!";
+        std::cout<<pr;
+        std::cout<<"Enter number of lines: -->  ";
+        pr="You are wrong; repeat please!\n";
     }while(getNum(m)<0 || m<1);
 
     pr="";
     int n;
     do{
-        std::cout<<pr<<"\n";
+        std::cout<<pr;
         std::cout<<"Enter number of colums: -->  ";
         pr="You are wrong; repeat please!\n";
         if(getNum(n)<0)
@@ -124,9 +124,10 @@ int getNum(T &a){
         return M;
     }
 
-    int printM(matrix *&M){
+    int printM(matrix *M){
+        std::cout<<"ll";
+        stroki *w=M->start;
 for(int i=0;i<M->m;i++)
-    stroki *w=M->start;
     if(w->stroknum!=i){
         for(int j=0;j<M->n;j++)
             std::cout<<"0 ";}
@@ -139,7 +140,10 @@ for(int i=0;i<M->m;i++)
                 std::cout<<e->k<<" ";
                 e=e->right;
             }
+    w=w->down;
     }
+       return 0;
         }
+
+    
     }
-}

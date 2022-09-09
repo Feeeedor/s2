@@ -25,4 +25,5 @@ namespace prog1{
 }
     
     matrix *input();
+    int printM(matrix *M);
 }
