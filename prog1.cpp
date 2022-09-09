@@ -16,7 +16,7 @@ int getNum(T &a){
     const char* pr="";
     int m;
     do{
-        std::cout<<pr<<":\n";
+        std::cout<<pr<<"\n";
         std::cout<<"Enter number of lines: -->";
         pr="You are wrong; repeat please!";
     }while(getNum(m)<0 || m<1);
@@ -24,9 +24,9 @@ int getNum(T &a){
     pr="";
     int n;
     do{
-        std::cout<<pr<<":\n";
+        std::cout<<pr<<"\n";
         std::cout<<"Enter number of colums: -->  ";
-        pr="You are wrong; repeat please!:\n";
+        pr="You are wrong; repeat please!\n";
         if(getNum(n)<0)
             return NULL;
     }while(n<1);
@@ -40,7 +40,8 @@ int getNum(T &a){
 
     M->m=m;
     M->n=n;
-    M->start=NULL;
+    
+    M->start=nullptr;
     std::cout<<"Enter matrix: -->";
     pr="You are wrong; repeat please!:\n";
     double a;
@@ -49,8 +50,10 @@ int getNum(T &a){
             if(getNum(a)<0){
                 std::cout<<pr;
                 return nullptr;}
+              
             if(a!=0){
-                if(M->start=NULL){
+                if(M->start==NULL){
+                   
                     try{
                         M->start=new stroki;
                     }
@@ -61,6 +64,7 @@ int getNum(T &a){
                     }
                     M->start->stroknum=i;
                     M->start->down=NULL;
+
                     try{
                         M->start->right=new stolbi;
                     }
@@ -116,6 +120,26 @@ int getNum(T &a){
                 }
             }
         }
+        
         return M;
+    }
+
+    int printM(matrix *&M){
+for(int i=0;i<M->m;i++)
+    stroki *w=M->start;
+    if(w->stroknum!=i){
+        for(int j=0;j<M->n;j++)
+            std::cout<<"0 ";}
+    else{
+    stolbi *e=w->right;
+    for(int j=0;j<M->n;j++)
+        if(e->stolbnum!=j)
+                std::cout<<"0 ";
+            else{
+                std::cout<<e->k<<" ";
+                e=e->right;
+            }
+    }
+        }
     }
 }
