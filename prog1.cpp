@@ -110,6 +110,69 @@ delete M;
 return 0;
 }
 
+int erase(double *&arr){
+
+delete []arr;
+return 0;
+}
+
+double * create( matrix *M){
+    double*arr;
+            try{
+                        arr=new double[M->Nstolb];
+                    }
+                    catch(std::bad_alloc &ba){
+                        std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+                        erase (arr);
+                        return 0;
+                    }
+int xline=find(M);
+
+note*w=M->first;
+while(w->numstrok!=xline)
+w=w->next;
+
+for(int i=0;i<M->Nstolb;i++)
+if(w!=NULL){
+if(i!=w->numstolb)
+arr[i]=0;
+else{
+arr[i]=w->k;
+w=w->next;}}
+else{
+    arr[i]=0;
+}
+/*
+for(int i=0;i<M->Nstolb;i++)
+std::cout<<arr[i]<<" ";
+std::cout<<std::endl;*/
+
+return arr;
+}
+
+int find(matrix *&M){
+note*w=M->first;
+double s=0;
+int col=0;
+double si=0;
+int coli=0;
+while(w!=NULL){
+if(w->numstrok!=coli){
+if(si>s){
+s=si;
+col=coli;}
+si=w->k;
+coli=w->numstrok;}
+else
+si=si+w->k;
+w=w->next;
+}
+if(si>s)
+return coli;
+else
+return col;
+}
+
 int vvodsize(int &m, int &n){
     const char* pr="";
         int c;

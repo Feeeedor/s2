@@ -27,4 +27,7 @@ namespace prog1{
     int vvodsize(int &m, int &n);
    int printM(matrix *M);
    int erase(matrix *&M);
+   int erase(double *&arr);
+   double* create( matrix *M);
+   int find(matrix *&M);
 }

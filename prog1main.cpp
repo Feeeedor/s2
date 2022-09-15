@@ -9,6 +9,9 @@ M=input();
 
 
 printM(M);
+double *arr;
+arr=create(M);
 erase(M);
+erase(arr);
     return 0;
 }
