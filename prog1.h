@@ -25,5 +25,6 @@ namespace prog1{
    int copy(note*&arr,note *&arr2);
     int vvod(matrix *&M);
     int vvodsize(int &m, int &n);
-   // int printM(matrix *M);
+   int printM(matrix *M);
+   int erase(matrix *&M);
 }

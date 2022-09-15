@@ -7,6 +7,8 @@ matrix *M;
 
 M=input();
 
-//printM(M);
+
+printM(M);
+erase(M);
     return 0;
 }
