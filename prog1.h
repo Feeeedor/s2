@@ -4,12 +4,13 @@ namespace prog1{
         double k;
         int numstrok;
         int numstolb;
+        note* next;
     };
     
     struct matrix{
     int Nstrok;
     int Nstolb;
-    note *arr;
+    note *first;
     };
     template <class T>
     
@@ -22,5 +23,7 @@ namespace prog1{
     
    matrix *input();
    int copy(note*&arr,note *&arr2);
+    int vvod(matrix *&M);
+    int vvodsize(int &m, int &n);
    // int printM(matrix *M);
 }

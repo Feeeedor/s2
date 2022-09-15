@@ -2,22 +2,9 @@
 #include "prog1.h"
 namespace prog1{
     matrix *input(){
-        const char* pr="";
         int m;
-        do{
-            std::cout<<pr;
-            std::cout<<"Enter number of lines: -->  ";
-            pr="You are wrong; repeat please!\n";
-        }while(getNum(m)<0 || m<1);
-        pr="";
         int n;
-        do{
-            std::cout<<pr;
-            std::cout<<"Enter number of colums: -->  ";
-            pr="You are wrong; repeat please!\n";
-            if(getNum(n)<0)
-                return NULL;
-        }while(n<1);
+        vvodsize(m,n);
     matrix *M;
     try{
         M=new matrix;
@@ -28,50 +15,47 @@ namespace prog1{
 
     M->Nstrok=m;
     M->Nstolb=n;
-    int size =0;
-    
+
+    vvod(M);
+    return M;}
+
+    int vvod(matrix *&M){
     std::cout<<"Enter matrix: -->";
-    pr="You are wrong; repeat please!:\n";
+    const char *pr="You are wrong; repeat please!:\n";
     double a;
-     try{
-        M->arr=new note[size];
-    }/*
-    catch(std::bad_alloc &ba){
-        std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
-      //erase
-        return NULL;
-    }*/
-   
+     
+  M->first=NULL;
+  note*w=M->first;
     for(int i=0;i<M->Nstrok;i++)
         for(int j=0;j<M->Nstolb;j++){
             if(getNum(a)<0){
                 std::cout<<pr;
-                return nullptr;}
+                return 1;}
             if(a!=0){
-                size++;
                 try{
-                     arr2=new note[size];
+                    w=new note;
                 }
-                copy (M->arr,arr2);
-                M->arr=arr2;
-                try{
-                    M->arr[size-1]=new note;
+                catch(std::bad_alloc &ba){
+                    std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+                //erase
+                return 0;
                 }
-                M->arr[size-1]->k=a;
-                M->arr[size-1]->numstrok=i;
-                M->arr[size-1]->numstolb=j;
+                
+                
+                
+                w->k=a;
+                w->numstrok=i;
+                w->numstolb=j;
+                w->next=NULL;
+                w=w->next;
             }
         }
+        return 0;
         }
         
-        return M;
-    }
-int copy(note*&arr,note *&arr2){
-    for(int i=0;i<sizeof(arr)/sizeof(note);i++)
-        arr2[i]=arr[i];
-    delete &arr;
-    return 0;
-}
+        
+    
+
 
 /*
     int printM(matrix *M){
@@ -95,5 +79,26 @@ for(int i=0;i<M->m;i++)
        return 0;
         }
 */
-    
+
+int vvodsize(int &m, int &n){
+    const char* pr="";
+        int c;
+        do{
+            std::cout<<pr;
+            std::cout<<"Enter number of lines: -->  ";
+            pr="You are wrong; repeat please!\n";
+        }while(getNum(c)<0 || c<1);
+        pr="";
+        m=c;
+        
+        do{
+            std::cout<<pr;
+            std::cout<<"Enter number of colums: -->  ";
+            pr="You are wrong; repeat please!\n";
+        }while(getNum(c)<0 || n<1);
+        n=c;
+        return 0;
+}
+
+}
     
