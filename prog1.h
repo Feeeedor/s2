@@ -1,19 +1,15 @@
 #include <iostream>
 namespace prog1{
-    struct stolbi{
-        int stolbnum;//номер столбца
-        double k;//само число
-        struct stolbi* right;
+    struct note{
+        double k;
+        int numstrok;
+        int numstolb;
     };
-    struct stroki{
-        int stroknum;//номер строки
-        struct stroki* down;
-        struct stolbi* right;
-    };
+    
     struct matrix{
-        int m;//число строк
-        int n;//число столбцов
-        struct stroki* start;
+    int Nstrok;
+    int Nstolb;
+    note *arr;
     };
     template <class T>
     
@@ -24,6 +20,7 @@ namespace prog1{
     return 1;
 }
     
-    matrix *input();
-    int printM(matrix *M);
+   matrix *input();
+   int copy(note*&arr,note *&arr2);
+   // int printM(matrix *M);
 }
