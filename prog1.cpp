@@ -4,9 +4,7 @@ namespace prog1{
     matrix *input(){
         int m;
         int n;
-        
-        
-         vvodsize(m,n);
+        vvodsize(m,n);
        
         matrix *M;
         try{
@@ -171,19 +169,19 @@ return 0;
 }
 
 int exchange(double*&arr, int n){
-if(arr[0]>0){
+    if(arr[0]>0){
     
-for(int i=0;i<n;i++)
-for(int j=i+1;j<n;j++)
-if(arr[j]<arr[i])
-swap(arr[i], arr[j]);}
-else{
-for(int i=0;i<n;i++)
-for(int j=i+1;j<n;j++)
-if(arr[j]>arr[i])
-swap(arr[i], arr[j]);
-}
-return 0;
+        for(int i=0;i<n;i++)
+            for(int j=i+1;j<n;j++)
+                    if(arr[j]<arr[i])
+                        swap(arr[i], arr[j]);}
+    else{
+        for(int i=0;i<n;i++)
+            for(int j=i+1;j<n;j++)
+                if(arr[j]>arr[i])
+                    swap(arr[i], arr[j]);
+    }
+    return 0;
 }
 
 
