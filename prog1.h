@@ -16,7 +16,7 @@ namespace prog1{
     
         int getNum(T &a){
     std::cin>>a;
-    if(!std::cin.good())
+    if(!std::cin.good() )
     return -1;
     return 1;
 }
@@ -30,4 +30,7 @@ namespace prog1{
    int erase(double *&arr);
    double* create( matrix *M);
    int find(matrix *&M);
+   int swap(double &x, double &y);
+   int exchange(double*&arr, int n);
+   int printArr(double*&arr, int n);
 }

@@ -4,7 +4,10 @@ namespace prog1{
     matrix *input(){
         int m;
         int n;
-        vvodsize(m,n);
+        
+        
+         vvodsize(m,n);
+       
         matrix *M;
         try{
             M=new matrix;
@@ -69,15 +72,16 @@ namespace prog1{
         return 0;
     }
         
-        
+    int printArr(double*&arr, int n){
+        std::cout<<"Vector: \n";
+        for(int i=0;i<n;i++)
+            std::cout<<arr[i]<<" ";
+        std::cout<<std::endl;
+return 0;
+    }
+
     int printM(matrix *M){
-        /*
-        note *w=M->first;
-        while(w!=NULL){
-        std::cout<<"k:"<<w->k<<" i:"<<w->numstrok+1<<" j:"<<w->numstolb+1<<"\n";
-        w=w->next;}
-        */
-        
+        std::cout<<"Matrix: \n";
         note *w=M->first;
         for(int i=0;i<M->Nstrok;i++){
             for(int j=0;j<M->Nstolb;j++){
@@ -122,76 +126,120 @@ double * create( matrix *M){
                         arr=new double[M->Nstolb];
                     }
                     catch(std::bad_alloc &ba){
-                        std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+                        std::cout<<"------- too many rows in vector:  "<<ba.what()<<":\n";
                         erase (arr);
                         return 0;
                     }
 int xline=find(M);
 
 note*w=M->first;
+if(w!=NULL){
 while(w->numstrok!=xline)
 w=w->next;
 
-for(int i=0;i<M->Nstolb;i++)
-if(w!=NULL){
-if(i!=w->numstolb)
-arr[i]=0;
-else{
-arr[i]=w->k;
-w=w->next;}}
-else{
-    arr[i]=0;
+for(int i=0;i<M->Nstolb;i++){
+    if(w->numstrok==xline){
+        if(i!=w->numstolb && w->numstrok==xline)
+            arr[i]=0;
+        else{
+            arr[i]=w->k;
+            w=w->next;}}
+    else{
+        arr[i]=0;
+    }
+   
 }
-/*
+}
+else
 for(int i=0;i<M->Nstolb;i++)
-std::cout<<arr[i]<<" ";
-std::cout<<std::endl;*/
+arr[i]=0;
+
+
+
+exchange(arr, M->Nstolb);
+
+
 
 return arr;
 }
 
-int find(matrix *&M){
-note*w=M->first;
-double s=0;
-int col=0;
-double si=0;
-int coli=0;
-while(w!=NULL){
-if(w->numstrok!=coli){
-if(si>s){
-s=si;
-col=coli;}
-si=w->k;
-coli=w->numstrok;}
-else
-si=si+w->k;
-w=w->next;
+int swap(double &x, double &y){
+double q=x;
+x=y;
+y=q;
+return 0;
 }
-if(si>s)
-return coli;
-else
-return col;
+
+int exchange(double*&arr, int n){
+if(arr[0]>0){
+    
+for(int i=0;i<n;i++)
+for(int j=i+1;j<n;j++)
+if(arr[j]<arr[i])
+swap(arr[i], arr[j]);}
+else{
+for(int i=0;i<n;i++)
+for(int j=i+1;j<n;j++)
+if(arr[j]>arr[i])
+swap(arr[i], arr[j]);
+}
+return 0;
+}
+
+
+int find(matrix *&M){
+    note*w=M->first;
+    double s=0;
+    int col=0;
+    double si=0;
+    int coli=0;
+    while(w!=NULL){
+        if(w->numstrok!=coli){
+            if(si>s){
+                s=si;
+                col=coli;}
+            si=w->k;
+            coli=w->numstrok;}
+        else
+            si=si+w->k;
+            w=w->next;
+    }
+    if(si>s)
+        return coli;
+    else
+        return col;
 }
 
 int vvodsize(int &m, int &n){
-    const char* pr="";
+
+const char* pr="";
+    
         int c;
-        do{
-            std::cout<<pr;
-            std::cout<<"Enter number of lines: -->  ";
-            pr="You are wrong; repeat please!\n";
-        }while(getNum(c)<0 || c<1);
-      pr="";
-        m=c;
+        int e;
         
+       
+        do{
+           std::cout<<pr;
+            std::cout<<"Enter number of lines: -->  ";
+           pr="You are wrong; repeat please!\n";
+           if(getNum(c)<0)
+               return 1;
+        }while( c<1);
+        m=c;
+        pr="";
         do{
            std::cout<<pr;
             std::cout<<"Enter number of colums: -->  ";
            pr="You are wrong; repeat please!\n";
-        }while(getNum(c)<0 || c<1);
+           if(getNum(c)<0)
+               return 1;
+        }while( c<1);
         n=c;
         return 0;
 }
+
+
+
 
 }
     

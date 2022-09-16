@@ -11,6 +11,7 @@ M=input();
 printM(M);
 double *arr;
 arr=create(M);
+printArr(arr, M->Nstolb);
 erase(M);
 erase(arr);
     return 0;
