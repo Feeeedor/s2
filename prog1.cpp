@@ -136,7 +136,7 @@ while(w->numstrok!=xline)
 w=w->next;
 
 for(int i=0;i<M->Nstolb;i++){
-    if(w->numstrok==xline){
+    if(w!=NULL && w->numstrok==xline){
         if(i!=w->numstolb && w->numstrok==xline)
             arr[i]=0;
         else{
@@ -213,7 +213,7 @@ int vvodsize(int &m, int &n){
 const char* pr="";
     
         int c;
-        int e;
+    
         
        
         do{
