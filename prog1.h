@@ -12,15 +12,11 @@ namespace prog1{
     int Nstolb;
     note *first;
     };
-    template <class T>
+
+
     
-        int getNum(T &a){
-    std::cin>>a;
-    if(!std::cin.good() )
-    return -1;
-    return 1;
-}
-    
+    int vvod(int &a);
+    int vvod(double &a);
    matrix *input();
    int copy(note*&arr,note *&arr2);
     int vvod(matrix *&M);

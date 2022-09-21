@@ -2,16 +2,14 @@
 #include "prog1.h"
 namespace prog1{
     matrix *input(){
-        int m;
-        int n;
+        int m, n;
         vvodsize(m,n);
-       
         matrix *M;
         try{
             M=new matrix;
         }
-        catch(std::bad_alloc &ba){
-            std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+        catch(std::exception &ba){
+            std::cout<<"Error:  "<<ba.what()<<":\n";
         }
 
         M->Nstrok=m;
@@ -23,17 +21,14 @@ namespace prog1{
 
     int vvod(matrix *&M){
         std::cout<<"Enter matrix: -->";
-        const char *pr="You are wrong; repeat please!:\n";
+       
         double a;
      
         M->first=NULL;
         note*w;
         for(int i=0;i<M->Nstrok;i++)
             for(int j=0;j<M->Nstolb;j++){
-                if(getNum(a)<0){
-                    std::cout<<pr;
-                    return 1;
-                }
+                vvod(a);
                 if(a!=0){
                     if(M->first==NULL){
                     try{
@@ -209,34 +204,42 @@ int find(matrix *&M){
 }
 
 int vvodsize(int &m, int &n){
-
-const char* pr="";
-    
-        int c;
-    
-        
-       
-        do{
-           std::cout<<pr;
             std::cout<<"Enter number of lines: -->  ";
-           pr="You are wrong; repeat please!\n";
-           if(getNum(c)<0)
-               return 1;
-        }while( c<1);
-        m=c;
-        pr="";
-        do{
-           std::cout<<pr;
+        vvod(m);
+        
+        
             std::cout<<"Enter number of colums: -->  ";
-           pr="You are wrong; repeat please!\n";
-           if(getNum(c)<0)
-               return 1;
-        }while( c<1);
-        n=c;
+          vvod(n);
+       
         return 0;
 }
 
 
+
+
+int vvod(int &a){
+while(1){    
+    std::cin>>a;
+   if(std::cin.good()==1)
+   break;
+    std::cout<<"You are wrong. Repeat please"<<std::endl;
+   std::cin.clear();
+std::cin.ignore();
+}
+return 1;
+}
+
+int vvod(double &a){
+while(1){    
+    std::cin>>a;
+   if(std::cin.good()==1)
+   break;
+    std::cout<<"You are wrong. Repeat please"<<std::endl;
+   std::cin.clear();
+std::cin.ignore();
+}
+return 1;
+}
 
 
 }
