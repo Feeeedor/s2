@@ -1,6 +1,7 @@
 #include <iostream>
 #include "prog1.h"
 namespace prog1{
+
     matrix *input(){
         int m, n;
         vvodsize(m,n);
@@ -11,19 +12,15 @@ namespace prog1{
         catch(std::exception &ba){
             std::cout<<"Error:  "<<ba.what()<<":\n";
         }
-
         M->Nstrok=m;
         M->Nstolb=n;
-
         vvod(M);
         return M;
     }
 
     int vvod(matrix *&M){
         std::cout<<"Enter matrix: -->";
-       
         double a;
-     
         M->first=NULL;
         note*w;
         for(int i=0;i<M->Nstrok;i++)
@@ -34,8 +31,8 @@ namespace prog1{
                     try{
                         M->first=new note;
                     }
-                    catch(std::bad_alloc &ba){
-                        std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+                    catch(std::exception &ba){
+                        std::cout<<"Error:  "<<ba.what()<<":\n";
                         erase (M);
                         return 0;
                     }
@@ -44,8 +41,8 @@ namespace prog1{
                         try{
                         w->next=new note;
                     }
-                    catch(std::bad_alloc &ba){
-                        std::cout<<"------- too many rows in matrix:  "<<ba.what()<<":\n";
+                    catch(std::exception &ba){
+                        std::cout<<"Error:  "<<ba.what()<<":\n";
                         erase(M);
                         return 0;
                     }
@@ -118,8 +115,8 @@ double * create( matrix *M){
             try{
                         arr=new double[M->Nstolb];
                     }
-                    catch(std::bad_alloc &ba){
-                        std::cout<<"------- too many rows in vector:  "<<ba.what()<<":\n";
+                    catch(std::exception &ba){
+                        std::cout<<"Error:  "<<ba.what()<<":\n";
                         erase (arr);
                         return 0;
                     }
