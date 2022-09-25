@@ -1,6 +1,6 @@
 #include <iostream>
 #include "prog1.h"
-namespace prog1{
+
 
     matrix *input(){
         int m, n;
@@ -18,14 +18,14 @@ namespace prog1{
         return M;
     }
 
-    int vvod(matrix *&M){
+    int vvod(matrix *M){
         std::cout<<"Enter matrix: -->";
         double a;
         M->first=NULL;
         note*w;
         for(int i=0;i<M->Nstrok;i++)
             for(int j=0;j<M->Nstolb;j++){
-                vvod(a);
+                vvodd(a);
                 if(a!=0){
                     if(M->first==NULL){
                     try{
@@ -62,7 +62,7 @@ namespace prog1{
         return 0;
     }
         
-    int printArr(double*&arr, int n){
+    int printArr(double*arr, int n){
         std::cout<<"Vector: \n";
         for(int i=0;i<n;i++)
             std::cout<<arr[i]<<" ";
@@ -93,7 +93,7 @@ return 0;
             
         return 0;
     }
-int erase(matrix *&M){
+int erase(matrix *M){
 note *w=M->first;
 while(w!=NULL){
     note*e=w->next;
@@ -104,7 +104,7 @@ delete M;
 return 0;
 }
 
-int erase(double *&arr){
+int erase(double *arr){
 
 delete []arr;
 return 0;
@@ -160,7 +160,7 @@ y=q;
 return 0;
 }
 
-int exchange(double*&arr, int n){
+int exchange(double*arr, int n){
     if(arr[0]>0){
     
         for(int i=0;i<n;i++)
@@ -177,7 +177,7 @@ int exchange(double*&arr, int n){
 }
 
 
-int find(matrix *&M){
+int find(matrix *M){
     note*w=M->first;
     double s=0;
     int col=0;
@@ -202,11 +202,11 @@ int find(matrix *&M){
 
 int vvodsize(int &m, int &n){
             std::cout<<"Enter number of lines: -->  ";
-        vvod(m);
+        vvodi(m);
         
         
             std::cout<<"Enter number of colums: -->  ";
-          vvod(n);
+          vvodi(n);
        
         return 0;
 }
@@ -214,7 +214,7 @@ int vvodsize(int &m, int &n){
 
 
 
-int vvod(int &a){
+int vvodi(int &a){
 while(1){    
     std::cin>>a;
    if(std::cin.good()==1)
@@ -226,7 +226,7 @@ std::cin.ignore();
 return 1;
 }
 
-int vvod(double &a){
+int vvodd(double &a){
 while(1){    
     std::cin>>a;
    if(std::cin.good()==1)
@@ -239,5 +239,5 @@ return 1;
 }
 
 
-}
+
     
