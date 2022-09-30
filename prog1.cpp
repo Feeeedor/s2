@@ -268,20 +268,18 @@ namespace Prog1{
 
     int vvodsize(int &m, int &n)
     {
-        std::cout << "Enter number of lines: -->  ";
-        vvodi(m);
-        while (m <= 0)
+
+        do
         {
             std::cout << "Enter number of lines: -->  ";
             vvodi(m);
-        }
-        std::cout << "Enter number of colums: -->  ";
-        vvodi(n);
-        while (n <= 0)
+        } while (m <= 0);
+
+        do
         {
             std::cout << "Enter number of colums: -->  ";
             vvodi(n);
-        }
+        } while (n <= 0);
         return 0;
     }
 
